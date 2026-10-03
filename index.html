@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Abdurahman's Website</title>
+
+
+    <style>
+
+        /* ===== GENERAL ===== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+            line-height: 1.6;
+        }
+
+
+        /* ===== NAVIGATION ===== */
+
+        nav {
+            background: #111;
+            padding: 18px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00c6ff;
+        }
+
+
+        /* ===== HOME ===== */
+
+        #home {
+            min-height: 90vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 30px;
+
+            background: linear-gradient(135deg, #111827, #1f2937);
+
+            color: white;
+        }
+
+        #home .logo {
+            width: 110px;
+            height: 110px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 50%;
+
+            background: #00bcd4;
+
+            font-size: 45px;
+
+            margin-bottom: 20px;
+
+            box-shadow: 0 0 25px rgba(0, 188, 212, 0.5);
+
+            animation: float 3s ease-in-out infinite;
+        }
+
+        #home h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        #home h2 {
+            font-size: 25px;
+            color: #00c6ff;
+            margin-bottom: 15px;
+        }
+
+        #home p {
+            font-size: 19px;
+            margin-bottom: 25px;
+        }
+
+
+        /* ===== BUTTON ===== */
+
+        .button {
+            display: inline-block;
+
+            background: #00bcd4;
+            color: white;
+
+            padding: 13px 28px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #008fa1;
+            transform: translateY(-3px);
+        }
+
+
+        /* ===== SECTIONS ===== */
+
+        section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 35px;
+        }
+
+
+        /* ===== ABOUT ===== */
+
+        #about {
+            text-align: center;
+        }
+
+        #about p {
+            max-width: 800px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+
+        /* ===== SERVICES ===== */
+
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .service {
+            background: white;
+
+            width: 300px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+            transition: 0.3s;
+        }
+
+        .service:hover {
+            transform: translateY(-10px);
+        }
+
+        .service .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .service h3 {
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+
+
+        /* ===== WHY CHOOSE ME ===== */
+
+        .reasons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .reason {
+            background: white;
+
+            width: 300px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+            transition: 0.3s;
+        }
+
+        .reason:hover {
+            transform: translateY(-8px);
+        }
+
+        .reason .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .reason h3 {
+            margin-bottom: 10px;
+        }
+
+
+        /* ===== PROJECTS ===== */
+
+        .projects {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .project {
+            background: white;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+        }
+
+
+        /* Project preview */
+
+        .project-image {
+            height: 180px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background: linear-gradient(135deg, #111827, #00bcd4);
+
+            color: white;
+
+            font-size: 55px;
+        }
+
+
+        .project-content {
+            padding: 25px;
+
+            text-align: center;
+        }
+
+        .project-content h3 {
+            margin-bottom: 10px;
+
+            font-size: 22px;
+        }
+
+        .project-content p {
+            margin-bottom: 20px;
+        }
+
+
+        /* ===== PRICING ===== */
+
+        .pricing {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .price-card {
+            background: white;
+
+            width: 300px;
+
+            padding: 35px 25px;
+
+            text-align: center;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+            transition: 0.3s;
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .price-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 30px;
+            font-weight: bold;
+
+            color: #00a6bd;
+
+            margin-bottom: 20px;
+        }
+
+        .price-card p {
+            margin-bottom: 20px;
+        }
+
+
+        /* ===== CONTACT ===== */
+
+        #contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            background: white;
+
+            max-width: 800px;
+
+            margin: auto;
+
+            padding: 40px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            background: #111;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+
+        /* ===== ANIMATIONS ===== */
+
+        @keyframes float {
+
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* ===== MOBILE ===== */
+
+        @media (max-width: 800px) {
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav a {
+                display: inline-block;
+
+                margin: 5px 7px;
+
+                font-size: 14px;
+            }
+
+            #home h1 {
+                font-size: 35px;
+            }
+
+            #home h2 {
+                font-size: 20px;
+            }
+
+            #home p {
+                font-size: 16px;
+            }
+
+            .service,
+            .reason,
+            .price-card {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ===== NAVIGATION ===== -->
+
+    <nav>
+
+        <a href="#home">HOME</a>
+
+        <a href="#about">ABOUT</a>
+
+        <a href="#services">SERVICES</a>
+
+        <a href="#why">WHY ME</a>
+
+        <a href="#projects">PROJECTS</a>
+
+        <a href="#pricing">PRICING</a>
+
+        <a href="#contact">CONTACT</a>
+
+    </nav>
+
+
+
+    <!-- ===== HOME ===== -->
+
+    <section id="home">
+
+        <div class="logo">
+            💻
+        </div>
+
+        <h1>ABDURAHMAN</h1>
+
+        <h2>WEB DESIGNER & LEARNER</h2>
+
+        <p>
+            Assalamu Alaykum! Welcome to my website.
+        </p>
+
+        <p>
+            I create simple, clean and useful websites.
+        </p>
+
+        <a class="button" href="#projects">
+            VIEW MY PROJECTS
+        </a>
+
+    </section>
+
+
+
+    <!-- ===== ABOUT ===== -->
+
+    <section id="about">
+
+        <h2>ABOUT ME</h2>
+
+        <p>
+            Assalamu Alaykum! My name is Abdurahman.
+            I am a student learning web development
+            and building useful digital skills step by step.
+        </p>
+
+        <br>
+
+        <p>
+            My goal is to improve my skills, create useful
+            websites and eventually provide web services
+            to people and small businesses.
+        </p>
+
+    </section>
+
+
+
+    <!-- ===== SERVICES ===== -->
+
+    <section id="services">
+
+        <h2>SERVICES I CAN OFFER</h2>
+
+        <div class="services">
+
+
+            <div class="service">
+
+                <div class="icon">🌐</div>
+
+                <h3>Simple Websites</h3>
+
+                <p>
+                    Clean and simple websites for
+                    individuals and small businesses.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="icon">🎨</div>
+
+                <h3>Web Design</h3>
+
+                <p>
+                    Attractive website layouts
+                    using HTML and CSS.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="icon">📄</div>
+
+                <h3>Personal Pages</h3>
+
+                <p>
+                    Personal portfolio and
+                    information websites.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ===== WHY ME ===== -->
+
+    <section id="why">
+
+        <h2>WHY WORK WITH ME?</h2>
+
+        <div class="reasons">
+
+
+            <div class="reason">
+
+                <div class="icon">⚡</div>
+
+                <h3>Simple & Clean</h3>
+
+                <p>
+                    I focus on websites that are
+                    simple and easy to understand.
+                </p>
+
+            </div>
+
+
+            <div class="reason">
+
+                <div class="icon">💡</div>
+
+                <h3>Always Learning</h3>
+
+                <p>
+                    I continuously learn new skills
+                    and improve my work.
+                </p>
+
+            </div>
+
+
+            <div class="reason">
+
+                <div class="icon">🤝</div>
+
+                <h3>Customer Focused</h3>
+
+                <p>
+                    I listen to what the customer
+                    wants and build around their needs.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ===== PROJECTS ===== -->
+
+    <section id="projects">
+
+        <h2>MY PROJECTS</h2>
+
+
+        <div class="projects">
+
+
+            <!-- PROJECT 1 -->
+
+            <div class="project">
+
+                <div class="project-image">
+                    🌐
+                </div>
+
+                <div class="project-content">
+
+                    <h3>My First Website</h3>
+
+                    <p>
+                        A personal website created
+                        using HTML and CSS.
+                    </p>
+
+                    <a class="button" href="#home">
+                        VIEW PROJECT
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROJECT 2 -->
+
+            <div class="project">
+
+                <div class="project-image">
+                    💻
+                </div>
+
+                <div class="project-content">
+
+                    <h3>Modern Web Design</h3>
+
+                    <p>
+                        A modern website design
+                        created for practice.
+                    </p>
+
+                    <a class="button" href="#home">
+                        VIEW PROJECT
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROJECT 3 -->
+
+            <div class="project">
+
+                <div class="project-image">
+                    🚀
+                </div>
+
+                <div class="project-content">
+
+                    <h3>Future Project</h3>
+
+                    <p>
+                        This space will contain
+                        one of my future projects.
+                    </p>
+
+                    <a class="button" href="#home">
+                        VIEW PROJECT
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ===== PRICING ===== -->
+
+    <section id="pricing">
+
+        <h2>EXAMPLE PRICING</h2>
+
+        <div class="pricing">
+
+
+            <div class="price-card">
+
+                <h3>Basic</h3>
+
+                <div class="price">
+                    $5
+                </div>
+
+                <p>
+                    Simple one-page website.
+                </p>
+
+                <a class="button" href="#contact">
+                    CONTACT ME
+                </a>
+
+            </div>
+
+
+            <div class="price-card">
+
+                <h3>Standard</h3>
+
+                <div class="price">
+                    $10
+                </div>
+
+                <p>
+                    Multi-section website
+                    with modern design.
+                </p>
+
+                <a class="button" href="#contact">
+                    CONTACT ME
+                </a>
+
+            </div>
+
+
+            <div class="price-card">
+
+                <h3>Custom</h3>
+
+                <div class="price">
+                    $20+
+                </div>
+
+                <p>
+                    A website customized
+                    for your needs.
+                </p>
+
+                <a class="button" href="#contact">
+                    CONTACT ME
+                </a>
+
+            </div>
+
+
+        </div>
+
+        <br>
+
+        <p style="text-align:center;">
+            These are example prices while I build my portfolio.
+        </p>
+
+    </section>
+
+
+
+    <!-- ===== CONTACT ===== -->
+
+    <section id="contact">
+
+        <h2>CONTACT ME</h2>
+
+        <div class="contact-box">
+
+            <p>
+                Interested in working with me?
+            </p>
+
+            <br>
+
+            <p>
+                📧 Email: your@email.com
+            </p>
+
+            <br>
+
+            <a class="button" href="mailto:your@email.com">
+                SEND EMAIL
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ===== FOOTER ===== -->
+
+    <footer>
+
+        <p>
+            © 2026 Abdurahman. All Rights Reserved.
+        </p>
+
+        <p>
+            Built with HTML & CSS 💻
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Baraka Restaurant</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        nav {
+            background: #3b1f0f;
+            padding: 18px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #f5c16c;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            height: 90vh;
+
+            background:
+                linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .btn {
+            display: inline-block;
+
+            background: #c47a2c;
+            color: white;
+
+            padding: 13px 25px;
+
+            text-decoration: none;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+            border: none;
+
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #f5c16c;
+            color: #3b1f0f;
+            transform: scale(1.05);
+        }
+
+        /* ================= SECTIONS ================= */
+
+        section {
+            padding: 70px 8%;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 36px;
+            color: #3b1f0f;
+            margin-bottom: 30px;
+        }
+
+        /* ================= CARDS ================= */
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 280px;
+
+            padding: 30px;
+
+            background: #fff8ef;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.1);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* ================= MENU ================= */
+
+        .menu-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .menu-item {
+            background: white;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.1);
+
+            transition: 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .menu-content {
+            padding: 20px;
+        }
+
+        .price {
+            color: #c47a2c;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            margin-top: 10px;
+        }
+
+        /* ================= OFFERS ================= */
+
+        .offers {
+            background: #3b1f0f;
+            color: white;
+        }
+
+        .offers h2 {
+            color: white;
+        }
+
+        .offer {
+            background: #5a3017;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            width: 280px;
+        }
+
+        /* ================= GALLERY ================= */
+
+        .gallery {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+        .gallery img {
+            width: 100%;
+
+            height: 250px;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+
+            transition: 0.4s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* ================= REVIEWS ================= */
+
+        .review {
+            background: #fff8ef;
+
+            padding: 25px;
+
+            width: 300px;
+
+            border-radius: 15px;
+        }
+
+        .stars {
+            color: #f5a623;
+
+            font-size: 22px;
+        }
+
+        /* ================= HOURS ================= */
+
+        .hours {
+            max-width: 600px;
+
+            margin: auto;
+        }
+
+        .hours p {
+            padding: 10px;
+
+            border-bottom:
+                1px solid #ddd;
+        }
+
+        /* ================= ORDER ================= */
+
+        #order {
+            background: #fff8ef;
+        }
+
+        .order-box {
+            max-width: 600px;
+
+            margin: auto;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.1);
+
+            text-align: left;
+        }
+
+        .order-box label {
+            display: block;
+
+            margin-top: 15px;
+
+            margin-bottom: 5px;
+
+            font-weight: bold;
+        }
+
+        .order-box input,
+        .order-box select {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+        }
+
+        .order-box input:focus,
+        .order-box select:focus {
+            outline: none;
+
+            border-color: #c47a2c;
+        }
+
+        #orderResult {
+            margin-top: 20px;
+
+            padding: 20px;
+
+            background: #fff8ef;
+
+            border-radius: 8px;
+
+            display: none;
+
+            text-align: center;
+
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: #b00020;
+        }
+
+        /* ================= CART ================= */
+
+        #cart {
+            margin-top: 30px;
+
+            padding: 25px;
+
+            background: #fff8ef;
+
+            border-radius: 12px;
+        }
+
+        #cart h3 {
+            color: #3b1f0f;
+
+            text-align: center;
+
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            background: white;
+
+            padding: 15px;
+
+            margin-bottom: 12px;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .cart-info {
+            flex: 1;
+        }
+
+        /* ================= QUANTITY CONTROLS ================= */
+
+        .quantity-controls {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+        }
+
+        .quantity-button {
+            background: #3b1f0f;
+
+            color: white;
+
+            border: none;
+
+            width: 35px;
+
+            height: 35px;
+
+            border-radius: 50%;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .quantity-button:hover {
+            background: #c47a2c;
+
+            transform: scale(1.1);
+        }
+
+        .quantity-number {
+            min-width: 30px;
+
+            text-align: center;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            color: #3b1f0f;
+        }
+
+        .remove-button {
+            background: #3b1f0f;
+
+            color: white;
+
+            border: none;
+
+            padding: 8px 12px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+        }
+
+        .remove-button:hover {
+            background: #c47a2c;
+        }
+
+        .cart-total {
+            text-align: center;
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+            color: #c47a2c;
+
+            margin-top: 20px;
+        }
+
+        .empty-cart {
+            text-align: center;
+
+            color: #777;
+
+            padding: 15px;
+        }
+
+        /* ================= ORDER HISTORY ================= */
+
+        #orderHistory {
+            margin-top: 30px;
+
+            padding: 25px;
+
+            background: #fff8ef;
+
+            border-radius: 12px;
+
+            display: none;
+        }
+
+        #orderHistory h3 {
+            color: #3b1f0f;
+
+            margin-bottom: 20px;
+
+            text-align: center;
+        }
+
+        .history-item {
+            background: white;
+
+            padding: 18px;
+
+            margin-bottom: 15px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .history-item strong {
+            color: #3b1f0f;
+        }
+
+        .clear-orders {
+            display: block;
+
+            margin: 20px auto 0;
+
+            background: #3b1f0f;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact {
+            background: #f8eee3;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #241208;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        /* ================= TOP BUTTON ================= */
+
+        #topButton {
+            position: fixed;
+
+            bottom: 25px;
+
+            right: 25px;
+
+            background: #c47a2c;
+
+            color: white;
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            display: none;
+        }
+
+        #topButton:hover {
+            background: #3b1f0f;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 800px) {
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .menu-grid,
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                display: inline-block;
+
+                margin: 5px;
+            }
+
+            .cart-item {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <nav>
+
+        <a href="#home">HOME</a>
+
+        <a href="#about">ABOUT</a>
+
+        <a href="#why">WHY US</a>
+
+        <a href="#menu">MENU</a>
+
+        <a href="#offers">OFFERS</a>
+
+        <a href="#gallery">GALLERY</a>
+
+        <a href="#reviews">REVIEWS</a>
+
+        <a href="#hours">HOURS</a>
+
+        <a href="#order">ORDER</a>
+
+        <a href="#contact">CONTACT</a>
+
+    </nav>
+
+
+    <!-- ================= HOME ================= -->
+
+    <section class="hero" id="home">
+
+        <div>
+
+            <h1>
+                Welcome to Baraka
+            </h1>
+
+            <p>
+                Delicious food, beautiful moments,
+                and unforgettable taste.
+            </p>
+
+            <a href="#menu" class="btn">
+
+                Explore Our Menu
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about">
+
+        <h2>
+            About Baraka
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>
+                    🍽️ Fresh Food
+                </h3>
+
+                <p>
+                    We prepare fresh and delicious meals
+                    using quality ingredients.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+                    ⭐ Quality
+                </h3>
+
+                <p>
+                    Quality food and excellent service
+                    are at the heart of Baraka.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+                    ❤️ Hospitality
+                </h3>
+
+                <p>
+                    Every guest is welcomed with warmth
+                    and respect.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= WHY US ================= -->
+
+    <section id="why">
+
+        <h2>
+            Why Choose Baraka?
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>
+                    🥬 Fresh Ingredients
+                </h3>
+
+                <p>
+                    Fresh ingredients selected carefully
+                    every day.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+                    👨‍🍳 Expert Chefs
+                </h3>
+
+                <p>
+                    Our chefs prepare every meal
+                    with care.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+                    🏠 Beautiful Place
+                </h3>
+
+                <p>
+                    A comfortable place for family
+                    and friends.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+                    😊 Happy Customers
+                </h3>
+
+                <p>
+                    Your happiness is our biggest success.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MENU ================= -->
+
+    <section id="menu">
+
+        <h2>
+            Our Menu
+        </h2>
+
+        <div class="menu-grid">
+
+
+            <!-- TRADITIONAL PLATTER -->
+
+            <div class="menu-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+                    alt="Traditional Platter">
+
+                <div class="menu-content">
+
+                    <h3>
+                        Traditional Platter
+                    </h3>
+
+                    <p>
+                        Authentic traditional flavors
+                        served beautifully.
+                    </p>
+
+                    <div class="price">
+                        350 ETB
+                    </div>
+
+                    <br>
+
+                    <a
+                        href="#order"
+                        class="btn order-button"
+                        data-food="Traditional Platter">
+
+                        Order Now 🍽️
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PIZZA -->
+
+            <div class="menu-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=800&q=80"
+                    alt="Special Pizza">
+
+                <div class="menu-content">
+
+                    <h3>
+                        Special Pizza
+                    </h3>
+
+                    <p>
+                        Hot pizza with delicious toppings
+                        and cheese.
+                    </p>
+
+                    <div class="price">
+                        450 ETB
+                    </div>
+
+                    <br>
+
+                    <a
+                        href="#order"
+                        class="btn order-button"
+                        data-food="Special Pizza">
+
+                        Order Now 🍽️
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- BURGER -->
+
+            <div class="menu-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=800&q=80"
+                    alt="Baraka Burger">
+
+                <div class="menu-content">
+
+                    <h3>
+                        Baraka Burger
+                    </h3>
+
+                    <p>
+                        Juicy burger prepared with
+                        fresh ingredients.
+                    </p>
+
+                    <div class="price">
+                        300 ETB
+                    </div>
+
+                    <br>
+
+                    <a
+                        href="#order"
+                        class="btn order-button"
+                        data-food="Baraka Burger">
+
+                        Order Now 🍽️
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PASTA -->
+
+            <div class="menu-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80"
+                    alt="Italian Pasta">
+
+                <div class="menu-content">
+
+                    <h3>
+                        Italian Pasta
+                    </h3>
+
+                    <p>
+                        Classic pasta with rich
+                        and delicious sauce.
+                    </p>
+
+                    <div class="price">
+                        320 ETB
+                    </div>
+
+                    <br>
+
+                    <a
+                        href="#order"
+                        class="btn order-button"
+                        data-food="Italian Pasta">
+
+                        Order Now 🍽️
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHICKEN -->
+
+            <div class="menu-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=800&q=80"
+                    alt="Chicken Special">
+
+                <div class="menu-content">
+
+                    <h3>
+                        Chicken Special
+                    </h3>
+
+                    <p>
+                        Tender chicken prepared
+                        with special spices.
+                    </p>
+
+                    <div class="price">
+                        400 ETB
+                    </div>
+
+                    <br>
+
+                    <a
+                        href="#order"
+                        class="btn order-button"
+                        data-food="Chicken Special">
+
+                        Order Now 🍽️
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SALAD -->
+
+            <div class="menu-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80"
+                    alt="Fresh Salad">
+
+                <div class="menu-content">
+
+                    <h3>
+                        Fresh Salad
+                    </h3>
+
+                    <p>
+                        Fresh vegetables with a light
+                        and tasty dressing.
+                    </p>
+
+                    <div class="price">
+                        200 ETB
+                    </div>
+
+                    <br>
+
+                    <a
+                        href="#order"
+                        class="btn order-button"
+                        data-food="Fresh Salad">
+
+                        Order Now 🍽️
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= OFFERS ================= -->
+
+    <section class="offers" id="offers">
+
+        <h2>
+            Special Offers
+        </h2>
+
+        <div class="cards">
+
+            <div class="offer">
+
+                <h3>
+                    🍕 Pizza Weekend
+                </h3>
+
+                <p>
+                    20% OFF
+                </p>
+
+                <p>
+                    Every Friday & Saturday
+                </p>
+
+            </div>
+
+            <div class="offer">
+
+                <h3>
+                    🍔 Burger Special
+                </h3>
+
+                <p>
+                    15% OFF
+                </p>
+
+                <p>
+                    Every Monday
+                </p>
+
+            </div>
+
+            <div class="offer">
+
+                <h3>
+                    👨‍👩‍👧 Family Day
+                </h3>
+
+                <p>
+                    10% OFF
+                </p>
+
+                <p>
+                    Every Sunday
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= GALLERY ================= -->
+
+    <section id="gallery">
+
+        <h2>
+            Food Gallery
+        </h2>
+
+        <div class="gallery">
+
+            <img
+                src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+                alt="Food">
+
+            <img
+                src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=900&q=80"
+                alt="Pizza">
+
+            <img
+                src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=900&q=80"
+                alt="Burger">
+
+            <img
+                src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=900&q=80"
+                alt="Pasta">
+
+            <img
+                src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=80"
+                alt="Chicken">
+
+            <img
+                src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80"
+                alt="Salad">
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= REVIEWS ================= -->
+
+    <section id="reviews">
+
+        <h2>
+            Customer Reviews
+        </h2>
+
+        <div class="cards">
+
+            <div class="review">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "Amazing food and wonderful service!"
+                </p>
+
+                <strong>
+                    — Ahmed
+                </strong>
+
+            </div>
+
+            <div class="review">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "A beautiful place with delicious meals."
+                </p>
+
+                <strong>
+                    — Sara
+                </strong>
+
+            </div>
+
+            <div class="review">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "The food was fresh and full of flavor."
+                </p>
+
+                <strong>
+                    — Mohammed
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= HOURS ================= -->
+
+    <section id="hours">
+
+        <h2>
+            Opening Hours
+        </h2>
+
+        <div class="hours">
+
+            <p>
+                <strong>
+                    Monday – Thursday:
+                </strong>
+
+                8:00 AM – 10:00 PM
+            </p>
+
+            <p>
+                <strong>
+                    Friday – Saturday:
+                </strong>
+
+                8:00 AM – 11:00 PM
+            </p>
+
+            <p>
+                <strong>
+                    Sunday:
+                </strong>
+
+                9:00 AM – 10:00 PM
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ORDER ================= -->
+
+    <section id="order">
+
+        <h2>
+            Place Your Order 🍽️
+        </h2>
+
+        <div class="order-box">
+
+
+            <label for="customerName">
+                Your Name
+            </label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Enter your name">
+
+
+            <label for="phone">
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter your phone number">
+
+
+            <label for="food">
+                Choose Your Food
+            </label>
+
+            <select id="food">
+
+                <option value="Traditional Platter">
+                    Traditional Platter - 350 ETB
+                </option>
+
+                <option value="Special Pizza">
+                    Special Pizza - 450 ETB
+                </option>
+
+                <option value="Baraka Burger">
+                    Baraka Burger - 300 ETB
+                </option>
+
+                <option value="Italian Pasta">
+                    Italian Pasta - 320 ETB
+                </option>
+
+                <option value="Chicken Special">
+                    Chicken Special - 400 ETB
+                </option>
+
+                <option value="Fresh Salad">
+                    Fresh Salad - 200 ETB
+                </option>
+
+            </select>
+
+
+            <label for="quantity">
+                Quantity
+            </label>
+
+            <input
+                type="number"
+                id="quantity"
+                value="1"
+                min="1">
+
+
+            <br><br>
+
+
+            <button
+                class="btn"
+                id="addToCartButton">
+
+                Add To Cart 🛒
+
+            </button>
+
+
+            <!-- ================= CART ================= -->
+
+            <div id="cart">
+
+                <h3>
+                    🛒 Your Cart
+                </h3>
+
+                <div id="cartList">
+
+                    <div class="empty-cart">
+                        Your cart is empty.
+                    </div>
+
+                </div>
+
+                <div class="cart-total">
+
+                    Total:
+                    <span id="cartTotal">
+                        0
+                    </span>
+                    ETB
+
+                </div>
+
+            </div>
+
+
+            <br>
+
+
+            <button
+                class="btn"
+                id="confirmButton">
+
+                Confirm Order ✅
+
+            </button>
+
+
+            <div id="orderResult"></div>
+
+
+            <!-- ================= ORDER HISTORY ================= -->
+
+            <div id="orderHistory">
+
+                <h3>
+                    📋 Order History
+                </h3>
+
+                <div id="historyList"></div>
+
+                <button
+                    class="btn clear-orders"
+                    id="clearOrdersButton">
+
+                    Clear Order History 🗑️
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section class="contact" id="contact">
+
+        <h2>
+            Contact Us
+        </h2>
+
+        <p>
+            📞 +251 900 000 000
+        </p>
+
+        <p>
+            📍 Addis Ababa, Ethiopia
+        </p>
+
+        <p>
+            🕐 Open from 8:00 AM – 10:00 PM
+        </p>
+
+        <br>
+
+        <a
+            href="tel:+251900000000"
+            class="btn">
+
+            Call Us
+
+        </a>
+
+    </section>
+
+
+    <!-- ================= TOP BUTTON ================= -->
+
+    <button id="topButton">
+        ↑
+    </button>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Baraka Restaurant
+        </p>
+
+        <p>
+            Designed with ❤️ by Abdure
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* ================= FOOD PRICES ================= */
+
+        const prices = {
+
+            "Traditional Platter": 350,
+
+            "Special Pizza": 450,
+
+            "Baraka Burger": 300,
+
+            "Italian Pasta": 320,
+
+            "Chicken Special": 400,
+
+            "Fresh Salad": 200
+
+        };
+
+
+        /* ================= CART ================= */
+
+        let cart =
+            JSON.parse(
+                localStorage.getItem(
+                    "barakaCart"
+                )
+            ) || [];
+
+
+        /* ================= SAVE CART ================= */
+
+        function saveCart() {
+
+            localStorage.setItem(
+                "barakaCart",
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+        /* ================= ORDER BUTTONS ================= */
+
+        const orderButtons =
+            document.querySelectorAll(".order-button");
+
+
+        orderButtons.forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const selectedFood =
+                    button.getAttribute("data-food");
+
+                document.getElementById("food").value =
+                    selectedFood;
+
+            });
+
+        });
+
+
+        /* ================= ADD TO CART ================= */
+
+        const addToCartButton =
+            document.getElementById(
+                "addToCartButton"
+            );
+
+
+        addToCartButton.addEventListener(
+            "click",
+            function() {
+
+                const food =
+                    document.getElementById(
+                        "food"
+                    ).value;
+
+
+                const quantity =
+                    Number(
+                        document.getElementById(
+                            "quantity"
+                        ).value
+                    );
+
+
+                const result =
+                    document.getElementById(
+                        "orderResult"
+                    );
+
+
+                if (quantity < 1) {
+
+                    result.style.display =
+                        "block";
+
+                    result.className =
+                        "error";
+
+                    result.innerHTML =
+                        "❌ Quantity must be at least 1.";
+
+                    return;
+
+                }
+
+
+                const price =
+                    prices[food];
+
+
+                /* CHECK IF FOOD ALREADY EXISTS */
+
+                const existingItem =
+                    cart.find(function(item) {
+
+                        return item.food === food;
+
+                    });
+
+
+                if (existingItem) {
+
+                    existingItem.quantity +=
+                        quantity;
+
+                }
+
+                else {
+
+                    cart.push({
+
+                        food: food,
+
+                        price: price,
+
+                        quantity: quantity
+
+                    });
+
+                }
+
+
+                saveCart();
+
+                displayCart();
+
+
+                result.style.display =
+                    "block";
+
+                result.className =
+                    "success";
+
+                result.innerHTML =
+                    "✅ " +
+                    food +
+                    " added to your cart!";
+
+
+            }
+        );
+
+
+        /* ================= DISPLAY CART ================= */
+
+        function displayCart() {
+
+            const cartList =
+                document.getElementById(
+                    "cartList"
+                );
+
+
+            const cartTotal =
+                document.getElementById(
+                    "cartTotal"
+                );
+
+
+            cartList.innerHTML = "";
+
+
+            if (cart.length === 0) {
+
+                cartList.innerHTML =
+
+                    '<div class="empty-cart">' +
+                    'Your cart is empty.' +
+                    '</div>';
+
+                cartTotal.textContent =
+                    "0";
+
+                return;
+
+            }
+
+
+            let total = 0;
+
+
+            cart.forEach(function(item, index) {
+
+                const itemTotal =
+                    item.price *
+                    item.quantity;
+
+
+                total += itemTotal;
+
+
+                const cartItem =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                cartItem.className =
+                    "cart-item";
+
+
+                cartItem.innerHTML =
+
+                    '<div class="cart-info">' +
+
+                    "<strong>" +
+                    item.food +
+                    "</strong>" +
+
+                    "<br>" +
+
+                    item.quantity +
+                    " × " +
+                    item.price +
+                    " ETB" +
+
+                    "<br>" +
+
+                    "Subtotal: " +
+                    itemTotal +
+                    " ETB" +
+
+                    "</div>" +
+
+                    '<div class="quantity-controls">' +
+
+                    '<button class="quantity-button" ' +
+                    'onclick="decreaseQuantity(' +
+                    index +
+                    ')">' +
+
+                    "−" +
+
+                    "</button>" +
+
+                    '<span class="quantity-number">' +
+
+                    item.quantity +
+
+                    "</span>" +
+
+                    '<button class="quantity-button" ' +
+                    'onclick="increaseQuantity(' +
+                    index +
+                    ')">' +
+
+                    "+" +
+
+                    "</button>" +
+
+                    "</div>" +
+
+                    '<button class="remove-button" ' +
+                    'onclick="removeFromCart(' +
+                    index +
+                    ')">' +
+
+                    "Remove ❌" +
+
+                    "</button>";
+
+
+                cartList.appendChild(
+                    cartItem
+                );
+
+            });
+
+
+            cartTotal.textContent =
+                total;
+
+        }
+
+
+        /* ================= INCREASE QUANTITY ================= */
+
+        function increaseQuantity(index) {
+
+            cart[index].quantity++;
+
+            saveCart();
+
+            displayCart();
+
+        }
+
+
+        /* ================= DECREASE QUANTITY ================= */
+
+        function decreaseQuantity(index) {
+
+            if (cart[index].quantity > 1) {
+
+                cart[index].quantity--;
+
+            }
+
+            else {
+
+                cart.splice(index, 1);
+
+            }
+
+            saveCart();
+
+            displayCart();
+
+        }
+
+
+        /* ================= REMOVE FROM CART ================= */
+
+        function removeFromCart(index) {
+
+            cart.splice(index, 1);
+
+            saveCart();
+
+            displayCart();
+
+        }
+
+
+        /* ================= CONFIRM ORDER ================= */
+
+        const confirmButton =
+            document.getElementById(
+                "confirmButton"
+            );
+
+
+        confirmButton.addEventListener(
+            "click",
+            function() {
+
+                const name =
+                    document.getElementById(
+                        "customerName"
+                    ).value.trim();
+
+
+                const phone =
+                    document.getElementById(
+                        "phone"
+                    ).value.trim();
+
+
+                const result =
+                    document.getElementById(
+                        "orderResult"
+                    );
+
+
+                /* VALIDATE NAME */
+
+                if (name === "") {
+
+                    result.style.display =
+                        "block";
+
+                    result.className =
+                        "error";
+
+                    result.innerHTML =
+                        "❌ Please enter your name.";
+
+                    return;
+
+                }
+
+
+                /* VALIDATE PHONE */
+
+                if (phone === "") {
+
+                    result.style.display =
+                        "block";
+
+                    result.className =
+                        "error";
+
+                    result.innerHTML =
+                        "❌ Please enter your phone number.";
+
+                    return;
+
+                }
+
+
+                if (phone.length < 9) {
+
+                    result.style.display =
+                        "block";
+
+                    result.className =
+                        "error";
+
+                    result.innerHTML =
+                        "❌ Please enter a valid phone number.";
+
+                    return;
+
+                }
+
+
+                /* CHECK CART */
+
+                if (cart.length === 0) {
+
+                    result.style.display =
+                        "block";
+
+                    result.className =
+                        "error";
+
+                    result.innerHTML =
+                        "❌ Your cart is empty.";
+
+                    return;
+
+                }
+
+
+                /* CALCULATE GRAND TOTAL */
+
+                let grandTotal = 0;
+
+
+                cart.forEach(function(item) {
+
+                    grandTotal +=
+                        item.price *
+                        item.quantity;
+
+                });
+
+
+                /* CREATE ORDER */
+
+                const newOrder = {
+
+                    name: name,
+
+                    phone: phone,
+
+                    items: [...cart],
+
+                    total: grandTotal,
+
+                    date: new Date().toLocaleString()
+
+                };
+
+
+                /* GET OLD ORDERS */
+
+                let orders =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "barakaOrders"
+                        )
+                    ) || [];
+
+
+                /* SAVE ORDER */
+
+                orders.push(newOrder);
+
+
+                localStorage.setItem(
+                    "barakaOrders",
+                    JSON.stringify(orders)
+                );
+
+
+                /* SHOW SUCCESS */
+
+                result.style.display =
+                    "block";
+
+                result.className =
+                    "success";
+
+
+                result.innerHTML =
+
+                    "🎉 Thank you, " +
+                    name +
+                    "!" +
+
+                    "<br><br>" +
+
+                    "Your order has been confirmed." +
+
+                    "<br><br>" +
+
+                    "💰 Total: " +
+                    grandTotal +
+                    " ETB";
+
+
+                /* EMPTY CART */
+
+                cart = [];
+
+
+                saveCart();
+
+                displayCart();
+
+
+                /* SHOW HISTORY */
+
+                displayOrderHistory();
+
+            }
+        );
+
+
+        /* ================= DISPLAY ORDER HISTORY ================= */
+
+        function displayOrderHistory() {
+
+            const historyBox =
+                document.getElementById(
+                    "orderHistory"
+                );
+
+
+            const historyList =
+                document.getElementById(
+                    "historyList"
+                );
+
+
+            let orders =
+                JSON.parse(
+                    localStorage.getItem(
+                        "barakaOrders"
+                    )
+                ) || [];
+
+
+            if (orders.length === 0) {
+
+                historyBox.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            historyBox.style.display =
+                "block";
+
+
+            historyList.innerHTML = "";
+
+
+            orders.forEach(function(order, index) {
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "history-item";
+
+
+                let foodList = "";
+
+
+                order.items.forEach(
+                    function(product) {
+
+                        foodList +=
+
+                            product.quantity +
+                            " × " +
+                            product.food +
+                            " (" +
+                            product.price +
+                            " ETB each)" +
+                            "<br>";
+
+                    }
+                );
+
+
+                item.innerHTML =
+
+                    "<strong>Order #" +
+                    (index + 1) +
+                    "</strong>" +
+
+                    "<br><br>" +
+
+                    "👤 Customer: " +
+                    order.name +
+
+                    "<br>" +
+
+                    "📞 Phone: " +
+                    order.phone +
+
+                    "<br><br>" +
+
+                    "🍽️ Items:<br>" +
+
+                    foodList +
+
+                    "<br>" +
+
+                    "💰 Total: " +
+                    order.total +
+                    " ETB" +
+
+                    "<br><br>" +
+
+                    "🕐 " +
+                    order.date;
+
+
+                historyList.appendChild(
+                    item
+                );
+
+            });
+
+        }
+
+
+        /* ================= CLEAR ORDER HISTORY ================= */
+
+        const clearOrdersButton =
+            document.getElementById(
+                "clearOrdersButton"
+            );
+
+
+        clearOrdersButton.addEventListener(
+            "click",
+            function() {
+
+                const answer =
+                    confirm(
+                        "Are you sure you want to delete all order history?"
+                    );
+
+
+                if (answer) {
+
+                    localStorage.removeItem(
+                        "barakaOrders"
+                    );
+
+
+                    displayOrderHistory();
+
+                }
+
+            }
+        );
+
+
+        /* ================= LOAD CART AND HISTORY ================= */
+
+        displayCart();
+
+        displayOrderHistory();
+
+
+        /* ================= BACK TO TOP ================= */
+
+        const topButton =
+            document.getElementById(
+                "topButton"
+            );
+
+
+        window.addEventListener(
+            "scroll",
+            function() {
+
+                if (window.scrollY > 300) {
+
+                    topButton.style.display =
+                        "block";
+
+                }
+
+                else {
+
+                    topButton.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+
+        topButton.addEventListener(
+            "click",
+            function() {
+
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior: "smooth"
+
+                });
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
